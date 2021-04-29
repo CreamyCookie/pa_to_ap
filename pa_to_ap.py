@@ -28,7 +28,7 @@ class Feed:
 
 
 def error(msg):
-    print(msg)
+    print("ERROR:", msg)
     sys.exit(1)
 
 
@@ -57,11 +57,11 @@ def get_antenna_pod_and_podcast_addict_backup_path():
         path_to_extract_to.mkdir(exist_ok=True)
 
         if not zipfile.is_zipfile(podcast_addict_backup_file):
-            error("somehow the podcast addict .backup file is not a zip")
+            error("somehow the Podcast Addict .backup file is not a zip")
 
         z = zipfile.ZipFile(podcast_addict_backup_file)
 
-        print("Extracting podcast addict backup..")
+        print("Extracting Podcast Addict backup..")
         z.extractall(path=path_to_extract_to)
 
         podcast_addict_db_file = get_one_file_or_error(  #
@@ -97,6 +97,7 @@ def transfer(podcast_addict_cur: Cursor, antenna_pod_cur: Cursor):
 
     # should never be larger than the largest weight (otherwise is
     # slightly unpredictable, as not every weight will be evaluated)
+    # value in range [0, 1]
     matcher.minimum_similarity = 0.78
 
     pa_to_ap = []
@@ -192,7 +193,7 @@ def transfer_from_feed_to_feed(podcast_addict_cur: Cursor,  #
                             break
 
             if not found:
-                print(f"!  no match for {ap_ep[1]}")
+                print(f"!  No match for: {ap_ep[1]}")
                 continue
 
         seen_match_count += 1
@@ -214,7 +215,7 @@ def transfer_from_feed_to_feed(podcast_addict_cur: Cursor,  #
             transfer_chapters(antenna_pod_cur, podcast_addict_cur,  #
                               pa_ep, ap_ep, pa.id)
 
-    print(f'\nINFO: {seen_match_count} episodes were matched')
+    print(f'\nINFO: In this feed {seen_match_count} episodes were matched')
 
 
 def transfer_chapters(antenna_pod_cur: Cursor,  #
@@ -266,8 +267,8 @@ def transfer_from_seen_ep_to_ep(antenna_pod_cur: Cursor,  #
 
 ap_db, pa_db = get_antenna_pod_and_podcast_addict_backup_path()
 print()
-print("antenna pod db found:", ap_db)
-print("podcast addict db found:", pa_db)
+print("AntennaPod .db file found:", ap_db)
+print("Podcast Addict .db file found:", pa_db)
 print()
 print()
 
