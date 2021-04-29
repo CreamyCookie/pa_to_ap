@@ -5,7 +5,7 @@ Migrate data from Podcast Addict's to AntennaPod's database
 * chapters
 * favorites
 * played status, duration played and playback date
-* adding file locations (so you don't have to download episodes in AntennaPod that were downloaded by Podcast Addict)
+* file locations (so you don't have to download episodes in AntennaPod that were downloaded by Podcast Addict)
 * feed: keep updated status
 
 This does not use any IDs for matching feeds and episodes from one db to another, as those tend to be very unreliable. (They're supposed to stay the same, but often they don't.) Instead, we match them by their name and, in some cases, other attributes. This will work even if the name changed. For example, when using the script one episode's name changed from something like `123. Great Title` to just `Great Title`, but they were still matched.
