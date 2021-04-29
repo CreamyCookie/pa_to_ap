@@ -8,7 +8,7 @@ Migrate data from Podcast Addict's to AntennaPod's database
 * adding file locations (so you don't have to download episodes in AntennaPod that were downloaded by Podcast Addict)
 * feed: keep updated status
 
-This does not use any IDs for matching feeds and episodes from one db to another, as those tend to be very unreliable. (They're supposed to stay the same, but often they don't.) Instead, we match them by their name and, in some cases, other attributes. This will work even if the name changed. For example, when using the script one episode's name change from something like `123. Great Title` to just `Great Title` and they were correctly matched.
+This does not use any IDs for matching feeds and episodes from one db to another, as those tend to be very unreliable. (They're supposed to stay the same, but often they don't.) Instead, we match them by their name and, in some cases, other attributes. This will work even if the name changed. For example, when using the script one episode's name changed from something like `123. Great Title` to just `Great Title`, but they were still matched.
 
 ## Steps
 
@@ -35,6 +35,6 @@ Of course, you can change the location (to which you have to manually copy/move 
 ## Warning
 Note that this is somewhat rough and will likely not handle a lot of edge cases.
 
-For example, it won't check if an episode is already in the Favorites table. It will simply add them again, if they're already there. It will also not take care of images.
+For example, it won't check if an episode is already in the Favorites table. It will simply add them again, if they're already there. It will also not take care of images or the queue.
 
 As a result, this works best with a fresh AntennaPod install. Without commenting out the relevant (`INSERT INTO`) lines, this script should not be rerun again on the same database.
