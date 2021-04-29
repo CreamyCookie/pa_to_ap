@@ -12,7 +12,7 @@ This does not use any IDs for matching feeds and episodes from one db to another
 
 ## Steps
 
-0. Install Python 3.8
+0. Install Python 3.8 or later
 1. Export OPML in Podcast Addict
 2. Import that OPML file in AntennaPod
 3. Make full backup in both apps (not OPML)
