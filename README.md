@@ -17,7 +17,7 @@ This does not use any IDs for matching feeds and episodes from one db to another
 2. Import that OPML file in AntennaPod
 3. Make full backup in both apps (not OPML)
 4. Put both in the same folder as this script
-5. Run this script (AntennaPod db file will be **modified**!) in a terminal
+5. Run the [`pa_to_ap.py`](pa_to_ap.py) script (AntennaPod db file will be **modified**!) in a terminal
 6. Confirm that matches are correct (if they aren't you may need to increase `min_similarity`)
 7. Copy the modified db file back to your phone
 8. Create `/storage/emulated/0/Android/data/de.danoeh.antennapod/files/media/from_podcast_addict` 
