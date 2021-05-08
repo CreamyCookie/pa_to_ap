@@ -15,8 +15,8 @@ This does not use any IDs for matching feeds and episodes from one db to another
 0. Install Python 3.8 or later
 1. Export OPML in Podcast Addict
 2. Import that OPML file in AntennaPod
-3. Make full backup in both apps (not OPML)
-4. Put both in the same folder as this script
+3. Make full backup in both apps (not OPML) - You'll have a `.db` from AntennaPod and a `.backup` file from Podcast Addict.
+4. Put them in the same folder as this script
 5. Run the [`pa_to_ap.py`](pa_to_ap.py) script (AntennaPod db file will be **modified**!) in a terminal
 6. Confirm that matches are correct (if they aren't you may need to increase `min_similarity`)
 7. Copy the modified db file back to your phone
