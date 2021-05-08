@@ -15,6 +15,7 @@ from matcher import ObjectListMatcher
 CUR_PATH = Path()
 
 EPISODES_DIR_PATH = '/storage/emulated/0/Android/data/de.danoeh.antennapod/files/media/from_podcast_addict'
+MATCH_ON_EPISODE_URL_IF_COULD_NOT_FIND_A_MATCH_OTHERWISE = True
 
 
 @dataclass
@@ -71,7 +72,6 @@ def get_antenna_pod_and_podcast_addict_backup_path():
 
 
 
-# merge two same name but preference to "Subscriber Content" version
 def transfer(podcast_addict_cur: Cursor, antenna_pod_cur: Cursor):
     # first find match for all feeds in pa
     pa_feeds = [Feed(*a) for a in podcast_addict_cur.execute(
@@ -122,9 +122,10 @@ def transfer(podcast_addict_cur: Cursor, antenna_pod_cur: Cursor):
     #for pa in pa_feeds:
     #    if pa.name == "Name of non premium podcast feed":
     #        for ap in ap_feeds:
-    #            if ap.name == "The same podcast but premium version":
+    #            # FIXME: make it work if premium and non-premium share same name
+    #            if ap.name == "Name of same podcast but premium version":
     #                transfer_from_feed_to_feed(podcast_addict_cur,
-    #                                          antenna_pod_cur, pa, ap)
+    #                                           antenna_pod_cur, pa, ap)
     #                break
     #        break
 
@@ -180,7 +181,7 @@ def transfer_from_feed_to_feed(podcast_addict_cur: Cursor,  #
 
             # give it one last chance
             ap_url = ap_ep[2]
-            if ap_url:
+            if MATCH_ON_EPISODE_URL_IF_COULD_NOT_FIND_A_MATCH_OTHERWISE:
                 ap_url = ap_url.strip()
                 if len(ap_url) > 9:
                     for pa_idx, pa_ep in enumerate(pa_episodes):
