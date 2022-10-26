@@ -181,7 +181,7 @@ def transfer_from_feed_to_feed(podcast_addict_cur: Cursor,  #
 
             # give it one last chance
             ap_url = ap_ep[2]
-            if MATCH_ON_EPISODE_URL_IF_COULD_NOT_FIND_A_MATCH_OTHERWISE:
+            if MATCH_ON_EPISODE_URL_IF_COULD_NOT_FIND_A_MATCH_OTHERWISE and ap_url is not None:
                 ap_url = ap_url.strip()
                 if len(ap_url) > 9:
                     for pa_idx, pa_ep in enumerate(pa_episodes):
